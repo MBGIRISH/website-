@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore UAE - Traveller Testimonials</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .testimonials {
+            background-color: #eaf0f9;
+            padding: 40px;
+            text-align: center;
+        }
+        .testimonial-item {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .testimonial-item h3 {
+            margin-top: 0;
+        }
+        .feedback-form {
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* Buttons and Inputs */
+        input, select, textarea {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            background-color: #ff6700;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #ff5500;
+        }
+        
+        /* Modal Popup Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .close-btn {
+            background-color: #ff6700;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .close-btn:hover {
+            background-color: #ff5500;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="testimonials">
+        <h2>Traveller's Testimonials</h2>
+        <div class="testimonial-item">
+            <h3>Amazing Experience in UAE!</h3>
+            <p>Travellers</p>
+            <p>From the towering Burj Khalifa to the cultural heritage of Abu Dhabi, UAE has it all!</p>
+        </div>
+        <div class="testimonial-item">
+            <h3>A Must Go Place</h3>
+            <p>Travellers</p>
+            <p>My visit to Dubai and the mesmerizing desert safari was unforgettable. The blend of luxury and tradition is unique!</p>
+        </div>
+        <div class="testimonial-item">
+            <h3>Simply Breathtaking</h3>
+            <p>Travellers</p>
+            <p>Exploring the man-made islands and the incredible skyline was a dream come true. Can't wait to return!</p>
+        </div>
+    </section>
+
+    <section class="feedback-form">
+        <h2>Submit Your Feedback</h2>
+        <form id="feedbackForm">
+            <input type="text" id="name" placeholder="Name" required><br>
+            <input type="file" id="photo" accept="image/*"><br>
+            <select id="rating" required>
+                <option value="" disabled selected>Rating</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+            </select><br>
+            <textarea id="feedback" rows="4" placeholder="Feedback" required></textarea><br>
+            <button type="button" class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+    </section>
+
+    <section class="footer">
+        <div>
+            <h3>Ready for Unforgettable Travel?</h3>
+            <p>Plan your next trip to the UAE and discover the magic of this unique destination.</p>
+            <p>Contact us at <a href="mailto:info@tripuae.com">info@tripuae.com</a> or call us at +971 123 456 789</p>
+            <p>Follow us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, and <a href="#">Instagram</a></p>
+        </div>
+    </section>
+
+    <!-- Modal Popup -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <h3>Thank you for your feedback!</h3>
+            <p>Your feedback has been submitted successfully.</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            const name = document.getElementById('name').value;
+            const rating = document.getElementById('rating').value;
+            const feedback = document.getElementById('feedback').value;
+
+            if (!name || !rating || !feedback) {
+                alert("Please fill all required fields.");
+                return;
+            }
+
+            // Show the modal popup
+            document.getElementById('feedbackModal').style.display = 'flex';
+            
+            // Clear the form after submission
+            document.getElementById('feedbackForm').reset();
+        }
+
+        function closeModal() {
+            // Hide the modal popup
+            document.getElementById('feedbackModal').style.display = 'none';
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('feedbackModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
